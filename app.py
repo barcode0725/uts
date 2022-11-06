@@ -3,15 +3,8 @@ import pandas as pd
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.svm import SVC
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.model_selection import train_test_split
-from nltk.corpus import stopwords
-import nltk
-import re
-import string
-import sys
-import logging
+#from sklearn.externals import joblib
+
 
 app = Flask(__name__)
 
