@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>SMS SPAM | HAM</title>
-	<!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
+	<title></title>
+   <!--  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> -->
+   <!-- <link rel="stylesheet" type="text/css" href="../static/css/styles.css"> -->
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="SMS Spam Filter  Spam  Ham">
     <meta name="description" content="Spam or Ham SMS Filter">
-    
+ 
     <link rel="icon" type="image/png" href="" />
     
 
@@ -19,7 +20,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 	<!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}"> -->
 	<style type="text/css">
-		.btn {
+	.btn {
   font-size: 1.2em;
   border-radius: 5px;
   padding: 12px 30px;
@@ -27,10 +28,9 @@
   text-transform: uppercase;
     margin-top: 10px;
 }
-
 .card-header{
     width:100%;
-	color:#2196F3;
+  color:#2196F3;
     border-bottom:3px solid #BBB;
     
     font-family: 'Roboto', sans-serif;
@@ -66,7 +66,11 @@
 .card-body{
  margin:1em;   
 }
+
+#resultbtn{
+
 	</style>
+
 </head>
 <body>
 
@@ -75,10 +79,11 @@
 	
 
 
+
 <div class="jumbotron jumbotron-fluid p-y-3">
       <div class="container text-xs-center text-white">
         <a href="https://github.com/maladeep/sms-spam-ham-detector" target="_blank" title="View code at Github"> <ion-icon name="logo-github" size="large"></ion-icon></a>
-
+       
         <h1 class="display-1 card-header" align="center" style="color:#2196F3;">Spam or Ham | SMS Detector  </h1>
         <p class="lead" align="center"> Paste your SMS below to check whether it is spam or  not(ham).  </p>
         
@@ -92,21 +97,28 @@
 </header>
 
 
-	<div class="container">
-<div class="well">
-		<form action="{{ url_for('predict')}}" method="POST" align="center">
-		<p class="lead">Enter Your SMS below</p>
-		
-		<textarea name="message" rows="4" cols="50" placeholder="Try: Hey baby, I love you!" required="required"></textarea>
-		<br/>
 
-		<input type="submit" class="btn-info btn" value="Let's Check" >
+	<p style="font-size:30;text-align: center;" class="lead"><b> <u>Result </u></b></p>
+	<div class="results">
+
+
 		
-	</form>
-		
+	{% if prediction == 1%}
+	<h2 style="color:red;" align="center">Spam</h2>
+	{% elif prediction == 0%}
+	<h2 style="color:blue;" align="center">Not a Spam (It is a Ham)</h2>
+	{% endif %}
+
 	</div>
 
-</div>
+<div class="form-row text-center">
+    <div class="col-12">
+         <a href="https://sms-spam-ham-detector.herokuapp.com"> <button type="submit" class="btn btn-primary">Check Again</button> </a>
+    </div>
+ </div>
+
+
+
 <div class="container">
 
 
@@ -168,48 +180,52 @@
 </div>
 <i>Based on accuracy, Naive Bayes classification outperform all, Thus this model is based on Naive Bayes classification algorithm.</i>
   
-                          
-
+                
 
                                 
                             </p>
                       </div>
                       
-                       
+                                  
+
+                        
                     </div>
                 </div>
             </div>
   
 
 <div class="col-md-6">
-        		<div class="card center">
+            <div class="card center">
                     <div class="card-content">
-                    	<div class="card-header">
+                      <div class="card-header">
                            <h1 class="card-heading"> About this project</h1>
-                       	</div>
-                       	<div class="card-body">
-                     	  <p class="card-p">
-                                This was the  project for the  partial fulfillment of IV/I year/semester Artificial Intelligence course (COMP 472), Computer Science.
+                        </div>
+                        <div class="card-body">
+                        <p class="card-p">
+                                This was the  project for the  partial fulfillment of IV/I year/semester Artificial Intelligence course (COMP 472), Computer Science, Kathmandu University.
 <br>
 <br>
                                     <i>Based on the instructor's feedbacks the project was updated.</i>
                                 
                             </p>
-                     	</div>
-                     	
-                     	<nav class="nav-tabs">
-                     		<ul class="nav nav-pills center">
-                                <li class="card-action"><u>Course Instructor</u> <a href="#">Santosh Khanal</a></li>
-                             
-                                  <li class="card-action"><u> Design & Develop </u> <a href="https://github.com/maladeep" target="_blank"> Mala Deep</a> </li>
+                      </div>
+                      
+                      <nav class="nav-tabs">
+                        <ul class="nav nav-pills center">
+                                <li class="card-action"><u>Course Instructor</u> <a href="#" >Santosh Khanal</a></li>
+                                <li class="card-action"><u> Design & Develop  </u> <a href="https://github.com/maladeep"  target="_blank"> Mala Deep</a> </li>
                               
+
+                                
                             </ul>
-                     		
-                     	</nav>
-                     		
+
+
+                        
+                      </nav>
+                        
                     </div>
                 </div>
-           	</div>
+            </div>
 
 
 
@@ -217,9 +233,7 @@
 
 
 
-
-	<script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
-	
+  <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
 
 </body>
 </html>
