@@ -3,8 +3,15 @@ import pandas as pd
 import pickle
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-# from sklearn.externals import joblib
-
+from sklearn.svm import SVC
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.model_selection import train_test_split
+from nltk.corpus import stopwords
+import nltk
+import re
+import string
+import sys
+import logging
 
 app = Flask(__name__)
 
@@ -14,7 +21,7 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-	filename = "https://raw.githubusercontent.com/barcode0725/uts0018/main/review_preprocessing.csv"
+	filename = "review_preprocessing.csv"
 	df = pd.read_csv(filename)
 	df.drop(columns=['gacoan_name', 'name'], inplace=True)
 
