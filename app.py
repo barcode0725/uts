@@ -14,7 +14,7 @@ def home():
 
 @app.route('/predict',methods=['POST'])
 def predict():
-	filename = "review_preprocessing.csv"
+	filename = "https://raw.githubusercontent.com/barcode0725/uts0018/main/spam.csv"
 	df = pd.read_csv(filename)
 	df.drop(columns=['gacoan_name', 'name'], inplace=True)
 
